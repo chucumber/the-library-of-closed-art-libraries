@@ -1,0 +1,101 @@
+:root {
+    --bg-color: #0f0f0f;
+    --text-color: #e0e0e0;
+    --rect-color: #1a1a1a;
+    --accent: #555;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+}
+
+/* Fixed Header */
+header {
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 20px;
+}
+
+/* Horizontal Scroll Container */
+.scroll-wrapper {
+    display: flex;
+    align-items: flex-end;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 10vw 10vh 10vw;
+    /* Padding for the sides and bottom */
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+/* Individual Rectangles */
+.library-link {
+    flex: 0 0 450px;
+    /* Width of each rectangle */
+    height: 60vh;
+    /* Height of each rectangle */
+    margin-right: 25vw;
+    /* The "Wide Gap" */
+    background-color: var(--rect-color);
+    border: 1px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    scroll-snap-align: center;
+    position: relative;
+}
+
+.library-link:hover {
+    background-color: #252525;
+    border-color: #fff;
+    transform: translateY(-10px);
+}
+
+.library-link span {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Label for the index */
+.library-link::before {
+    content: attr(data-index);
+    position: absolute;
+    top: -40px;
+    left: 0;
+    font-size: 0.8rem;
+    color: var(--accent);
+}
+
+/* Hide scrollbar for Chrome/Safari */
+.scroll-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+    background: var(--accent);
+}
