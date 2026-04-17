@@ -1,8 +1,19 @@
 :root {
-    --bg-color: #0f0f0f;
-    --text-color: #e0e0e0;
-    --rect-color: #1a1a1a;
-    --accent: #555;
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --rect-color: #413c2b;
+    --border-color: #413c2b;
+    --ocac: #A4C3B6;
+    --neia: #BD9979;
+    --mca: #C7B567;
+    --ua: #98B4D9;
+    --dcad: #CA8684;
+    --sfai: #9BBA90;
+    --cca: #A9A9C3;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body,
@@ -10,92 +21,183 @@ html {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Georgia', serif;
-    overflow-x: hidden;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#lightCanvas {
+    position: fixed;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Fixed Header */
 header {
     position: fixed;
-    top: 10%;
-    left: 5%;
+    top: 0;
+    width: 100%;
     z-index: 10;
+    padding: 0 1rem;
 }
 
 h1 {
-    font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 20px;
+    /* font-family:'AurelisADF-Italic', Times, serif; */
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+}
+
+section {
+    position: fixed;
+    top: 2.5rem; /* 放在標題下方 */
+    padding: 0 1rem;
+    z-index: 10;
+    font-size: 1rem;
+}
+
+#about-trigger {
+    cursor: pointer;
+    display: inline-block;
+    transition: color 0.3s ease;
+    letter-spacing: 1px;
+}
+
+#about-trigger:hover {
+        color: #e9e8c5;
+
+}
+
+#about-content {
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    max-height: 0;
+    overflow: hidden;
+    width: 400px;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    line-height: 1.75;
+}
+
+#about-content.is-visible {
+    max-height: 800px; /* 設定一個足夠大的高度 */
+    transition: max-height 1s ease-in-out;
+    margin-top: .5rem;
+}
+
+#about-content a {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+}
+
+#about-content a:hover {
+        color: #e9e8c5;
+
 }
 
 /* Horizontal Scroll Container */
 .scroll-wrapper {
+    margin-top: auto;
     display: flex;
     align-items: flex-end;
-    height: 100vh;
+    height: 70vh;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 0 10vw 10vh 10vw;
-    /* Padding for the sides and bottom */
-    scroll-snap-type: x proximity;
+    padding: 0 50vw;
+    scroll-snap-type: x mandatory;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) transparent;
+    z-index: 2;
 }
 
-/* Individual Rectangles */
 .library-link {
-    flex: 0 0 450px;
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 15vw;
     /* Width of each rectangle */
     height: 60vh;
-    /* Height of each rectangle */
-    margin-right: 25vw;
-    /* The "Wide Gap" */
+    margin-right: 30vw;
     background-color: var(--rect-color);
-    border: 1px solid var(--accent);
+    opacity: 0.2;
     display: flex;
-    align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: all 0.4s ease;
     scroll-snap-align: center;
     position: relative;
+    transition: opacity 0.6s ease, background-color 0.6s ease, border-color 0.6s ease;
 }
 
-.library-link:hover {
-    background-color: #252525;
-    border-color: #fff;
-    transform: translateY(-10px);
+.library-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./img/wood-texture.jpg'), url('https://cdn.jsdelivr.net/gh/chucumber/the-library-of-closed-art-libraries@main/img/wood-texture.jpg'); 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2; 
+    mix-blend-mode: overlay; 
+    z-index: -1; 
+    }
+
+.library-link:last-child {
+    margin-right: 0;
 }
+
+.library-link:nth-child(1).is-lit { background-color: var(--ocac); }
+.library-link:nth-child(2).is-lit { background-color: var(--neia); }
+.library-link:nth-child(3).is-lit { background-color: var(--ua); }
+.library-link:nth-child(4).is-lit { background-color: var(--sfai); } /* Center item */
+.library-link:nth-child(5).is-lit { background-color: var(--dcad); }
+.library-link:nth-child(6).is-lit { background-color: var(--cca); }
+.library-link:nth-child(7).is-lit { background-color: var(--mca); }
+
 
 .library-link span {
-    color: var(--text-color);
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    text-align: center;
-    padding: 0 20px;
+    background: #e0e0e0;
+    color: #e0e0e0;
+    width: 7rem;
+    height: 9rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 1rem;
+    margin-top: 50%;
 }
 
-/* Label for the index */
-.library-link::before {
-    content: attr(data-index);
-    position: absolute;
-    top: -40px;
-    left: 0;
-    font-size: 0.8rem;
-    color: var(--accent);
+/* The "Spotlight" state */
+.library-link.is-lit {
+    opacity: 0.8;
 }
 
-/* Hide scrollbar for Chrome/Safari */
-.scroll-wrapper::-webkit-scrollbar {
-    height: 6px;
+/* Ensure the span fades too */
+.library-link span {
+    transition: opacity 0.6s ease;
+    opacity: 0.1;
 }
 
-.scroll-wrapper::-webkit-scrollbar-thumb {
-    background: var(--accent);
+.library-link.is-lit span {
+    color: #26241e;
+        opacity: 1;
+}
+
+#reader {
+    position: fixed;
+    bottom: 0;
+    left: 30%;
+    width: 8vw;
+    z-index: 10;
+    opacity: 0.1;
+}
+
+#reader img {
+    width: 100%;
 }
