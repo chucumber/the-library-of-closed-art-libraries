@@ -49,10 +49,10 @@ class Particle {
     reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 1.2 + 0.5;
-        this.speedY = -(Math.random() * 0.3 + 0.01);
+        this.size = Math.random() * 1.2 + 1.5;
+        this.speedY = -(Math.random() * 0.3 + 0.1);
         this.vx = Math.random() * 0.2 - 0.1;
-        this.opacity = Math.random() * 0.8;
+        this.opacity = Math.random() * 0.6;
     }
     update() {
         this.y += this.speedY;
@@ -74,7 +74,7 @@ function drawSingleBeam(tick) {
     const centerX = width / 2;
     const topWidth = width * 0.3;    // Narrow top
     const bottomWidth = width * 0.6; // Wide bottom
-    const maxOpacity = 0.3;
+    const maxOpacity = 0.2;
 
     // Subtle pulse
     const pulse = Math.sin(tick * 0.0005) * 0.05;
@@ -82,7 +82,7 @@ function drawSingleBeam(tick) {
     const dynamicOpacity2 = 0 + pulse;
 
     const gradient = ctx.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, `rgba(230, 230, 220, ${dynamicOpacity})`);
+    gradient.addColorStop(0, `rgba(240, 240, 240, ${dynamicOpacity})`);
     gradient.addColorStop(0.9, `rgba(230, 230, 220, ${dynamicOpacity2})`);
 
     ctx.filter = "blur(20px)";
@@ -104,8 +104,8 @@ function animate(tick) {
 
 // Background depth
             const bgGrad = ctx.createRadialGradient(width/2, 0, 0, width/2, 0, height);
-            bgGrad.addColorStop(0, '#ede7d2ff');
-            bgGrad.addColorStop(1, '#59533fff');
+            bgGrad.addColorStop(0, '#ffffffff');
+            bgGrad.addColorStop(1, '#afa18fff');
             ctx.fillStyle = bgGrad;
             ctx.fillRect(0, 0, width, height);
 
