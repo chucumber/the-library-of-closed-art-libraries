@@ -16,8 +16,7 @@
     box-sizing: border-box;
 }
 
-body,
-html {
+#hp-body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -40,7 +39,7 @@ html {
 }
 
 /* Fixed Header */
-header {
+#hp-header {
     position: fixed;
     top: 0;
     width: 100%;
@@ -48,16 +47,16 @@ header {
     padding: 0 1rem;
 }
 
-h1 {
+#hp-header h1 {
     /* font-family:'AurelisADF-Italic', Times, serif; */
     font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: 1.2px;
 }
 
-section {
+#hp-section {
     position: fixed;
-    top: 2.5rem; /* 放在標題下方 */
+    top: 2.5rem;
     padding: 0 1rem;
     z-index: 10;
     font-size: 1rem;
@@ -86,7 +85,7 @@ section {
 }
 
 #about-content.is-visible {
-    max-height: 800px; /* 設定一個足夠大的高度 */
+    max-height: 800px;
     transition: max-height 1s ease-in-out;
     margin-top: .5rem;
 }
@@ -103,7 +102,7 @@ section {
 }
 
 /* Horizontal Scroll Container */
-.scroll-wrapper {
+#scroller {
     margin-top: auto;
     display: flex;
     align-items: flex-end;
@@ -187,17 +186,4 @@ section {
 .library-link.is-lit span {
     color: #26241e;
         opacity: 1;
-}
-
-#reader {
-    position: fixed;
-    bottom: 0;
-    left: 30%;
-    width: 8vw;
-    z-index: 10;
-    opacity: 0.1;
-}
-
-#reader img {
-    width: 100%;
 }

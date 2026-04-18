@@ -21,12 +21,10 @@ window.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => observer.observe(item));
 });
 
-// 在你的 init() 函式外或內加入皆可
 const aboutTrigger = document.getElementById('about-trigger');
 const aboutContent = document.getElementById('about-content');
 
 aboutTrigger.addEventListener('click', () => {
-    // 切換顯示類別
     aboutContent.classList.toggle('is-visible');
 });
 
