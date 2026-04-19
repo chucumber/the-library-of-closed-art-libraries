@@ -1,6 +1,7 @@
 :root {
     --bg-color: #9BBA90;
     --card-bg: #939cff;
+    --link-bg: #97f220;
     --text-color: #2e2e2e;
     --border-color: #7b9772;
 }
@@ -14,7 +15,7 @@ body {
     padding: 0;
     width: 100%;
     height: 100vh;
-    background-color: #bccfb5;
+    background-color: #cbe3c2;
     color: var(--text-color);
     font-family: 'Georgia', serif;
     /* overflow: hidden; */
@@ -25,9 +26,10 @@ body {
 header {
     position: fixed;
     top: 0;
-    width: 100%;
     z-index: 10;
-    padding: 0 1rem;
+    padding: 0 2rem;
+    /* background: #ffffff; */
+    /* border: 1px solid var(--border-color); */
 }
 
 header h1 {
@@ -45,6 +47,55 @@ h1 a {
     text-decoration: none;
 }
 
+section {
+    position: fixed;
+    top: 3rem;
+    z-index: 10;
+    font-size: 1rem;
+}
+
+#about-trigger {
+    cursor: pointer;
+    display: inline-block;
+    transition: color 0.3s ease;
+    letter-spacing: 1px;
+    padding: .5rem 2rem;
+    border: 1px solid var(--border-color);
+    background: #d1c3b2;
+}
+
+#about-trigger:hover {
+    background: var(--rect-color);
+}
+
+#about-content {
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    max-height: 0;
+    overflow: hidden;
+    width: 400px;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    line-height: 1.75;
+    padding: 0 0 0 2rem;
+}
+
+#about-content.is-visible {
+    max-height: 800px;
+    transition: max-height 1s ease-in-out;
+    margin-top: .5rem;
+}
+
+#about-content a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+
+#about-content a:hover {
+    color: #e9e8c5;
+
+}
+
 .top {
     width: 100%;
     height: 4rem;
@@ -59,11 +110,11 @@ h1 a {
 }
 
 .schoolname {
-    background: #ececec;
+    background: #2e2e2e;
+    color: #ffffff;
     text-align: center;
     padding: 1rem 2rem;
     border: 1px solid var(--border-color);
-    opacity: 0.9;
 }
 
 .schoolname h2 {
@@ -178,7 +229,7 @@ h1 a {
 }
 
 .link-content {
-    background: var(--card-bg);
+    background: var(--link-bg);
     color: var(--text-color);
     flex-direction: column;
 }
@@ -211,7 +262,7 @@ h1 a {
     cursor: default;
     transition: none; 
 
-    background: #ececec;
+    background: #f8f8f8;
 }
 
 .content-wrapper.is-popped img {

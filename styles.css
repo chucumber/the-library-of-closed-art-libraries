@@ -2,7 +2,7 @@
     --bg-color: #ffffff;
     --text-color: #000000;
     --rect-color: #827463;
-    --border-color: #7b7461;
+    --border-color: #a8a393;
     --ocac: #A4C3B6;
     --neia: #BD9979;
     --mca: #C7B567;
@@ -63,7 +63,7 @@ h1 a {
     text-decoration: none;
 }
 
-#hp-section {
+section {
     position: fixed;
     top: 3rem;
     z-index: 10;
